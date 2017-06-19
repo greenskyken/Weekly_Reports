@@ -1,0 +1,35 @@
+Plotter Requirements
+
+Create new table for each site
+- Subset of tickets...Priority 1 to 3 only
+
+Calculate months and years from data
+- Store in dataframe names
+
+Calculate the # of tickets for the past 6 months, counting from the most current data month
+- By priority (1, 2, and 3)
+
+Calculate the average outstanding
+- Date created less date closed (or current date if not closed)
+- Calculate average days outstanding for last 6 months from current
+- currently NA for unclosed items...Change to current date - creation date
+- Calculation is:
+	X <- Sys.Date()
+	Y <- as.Date(GK_Parsing[1,4],format="%m/%d/%Y")
+	X - Y
+	Time difference of 86 days
+	
+Chart Title
+- "SAP Notifications - Victor Mine - Six Months"
+- Y Axis - "New Tickets/Average Outsanding"
+- X Axis - " Month/Year" with 6 (one for each month) dataa names "Month-Year"
+- Up to 6 bars above each month listed
+- Empty months - sill there and listed at 0
+- Legend on side
+	Location	Priority	Title
+	VSEE1		1			Average Outstanding
+	VSEE1		1			Count of Total Created
+	VSEE1		2			Average Outstanding
+	VSEE1		2			Count of Total Created	
+	VSEE1		3			Average Outstanding
+	VSEE1		3			Count of Total Created	
