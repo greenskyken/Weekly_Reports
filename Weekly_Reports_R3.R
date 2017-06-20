@@ -9,7 +9,7 @@
   library(ggplot2)     # Plotting
 
 # Import Excel File
-  SAP_REPORT <- read_csv("~/Desktop/My Stuff/R/Weekly_Reports/&__Data/SAP-REPORT.csv")
+  SAP_REPORT <- read_csv("~/Desktop/Stuff/R/Weekly_Reports/&__Data/SAP-REPORT.csv")
   names(SAP_REPORT) <- c("Type","WorkCtr","Notification","Created","Completed","Priority","PrText","PrType","WorkOrder","SortField",
                          "ShortDesc","CreatedBy","LongDesc","ReportedBy","Status")
 
@@ -38,18 +38,19 @@
   rm(Parsing_ColNames)
 
 # Migrate data to parsing tables - Columns 1, 2, 3, 4, 6
-  Parsing_GK$Created <- SAP_GK$Created 
-  Parsing_GK$Completed <- SAP_GK$Completed
-  Parsing_GK$Priority <- SAP_GK$Priority
+  Parsing_GK$Created <- SAP_GK$Created
   Parsing_GK$Month <- month(SAP_GK$Created)
   Parsing_GK$Year <- year(SAP_GK$Created)
+  Parsing_GK$Completed <- SAP_GK$Completed
+  Parsing_GK$Priority <- SAP_GK$Priority
 
 
   Parsing_VM$Created <- SAP_VM$Created
-  Parsing_VM$Completed <- SAP_VM$Completed
-  Parsing_VM$Priority <- SAP_VM$Priority
   Parsing_VM$Month <- month(SAP_VM$Created)
   Parsing_VM$Year <- year(SAP_VM$Created)
+  Parsing_VM$Completed <- SAP_VM$Completed
+  Parsing_VM$Priority <- SAP_VM$Priority
+
 
 ## Parsing Data
 # If no completion date, add todays date
@@ -105,15 +106,16 @@
     Counter <- Counter + 1
   }
 
-  rm(SAP_GK,SAP_VM, Counter)
+ rm(SAP_GK,SAP_VM, Counter)
 
 ## Extract and calculate current record set - Last six months data
-# Get record start date
-  StartDate <-Sys.Date() %m-% months(5)
+# Get record start date-first of the month
+  StartDate <- Sys.Date() %m-% months(5)
 
-# Delete all records older than start date
-  Parsing_GK <- Parsing_GK[!(Parsing_GK$Created < StartDate),]
-  Parsing_VM <- Parsing_VM[!(Parsing_VM$Created < StartDate),]
+
+# Delete all records older than start date - not required (month and year checked later)
+##  Parsing_GK <- Parsing_GK[!(Parsing_GK$Created < StartDate),]
+##  Parsing_VM <- Parsing_VM[!(Parsing_VM$Created < StartDate),]
 
 # Create DFs with names
   LastSixMonths_GK <-data.frame(matrix(ncol=12,nrow=6))
@@ -314,4 +316,4 @@
     ggtitle(VM_Title) + scale_fill_manual(values=cbPalette) + labs(fill = "Legend") +
     scale_y_continuous(limits = c(0,VM_Scale), breaks = seq(0,VM_Scale,10), minor_breaks = seq(10,110,20))
   
-  # rm(list=ls())
+  rm(list=ls())
