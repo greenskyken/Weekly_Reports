@@ -9,7 +9,7 @@
   library(ggplot2)     # Plotting
 
 # Import Excel File
-  SAP_REPORT <- read_csv("~/Desktop/My Stuff/R/Weekly_Reports/&__Data/SAP-REPORT.csv")
+  SAP_REPORT <- read_csv("~/Desktop/Stuff/R/Weekly_Reports/&__Data/SAP-REPORT.csv")
   names(SAP_REPORT) <- c("Type","WorkCtr","Notification","Created","Completed","Priority","PrText","PrType","WorkOrder","SortField",
                          "ShortDesc","CreatedBy","LongDesc","ReportedBy","Status")
 
@@ -314,4 +314,4 @@
     ggtitle(VM_Title) + scale_fill_manual(values=cbPalette) + labs(fill = "Legend") +
     scale_y_continuous(limits = c(0,VM_Scale), breaks = seq(0,VM_Scale,10), minor_breaks = seq(10,110,20))
   
-  # rm(list=ls())
+  rm(list=ls())

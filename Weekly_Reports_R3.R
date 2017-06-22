@@ -111,13 +111,11 @@
 ## Extract and calculate current record set - Last six months data
 # Get record start date-first of the month
   StartDate <- Sys.Date() %m-% months(5)
-
+  day(StartDate) <- 01
 
 # Delete all records older than start date - not required (month and year checked later)
-##  Parsing_GK <- Parsing_GK[!(Parsing_GK$Created < StartDate),]
-##  Parsing_VM <- Parsing_VM[!(Parsing_VM$Created < StartDate),]
-##  Parse current date less 6 months
-##  Date to be the first of that month
+  Parsing_GK <- Parsing_GK[!(Parsing_GK$Created < StartDate),]
+  Parsing_VM <- Parsing_VM[!(Parsing_VM$Created < StartDate),]
 
 # Create DFs with names
   LastSixMonths_GK <-data.frame(matrix(ncol=12,nrow=6))
