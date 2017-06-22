@@ -116,6 +116,8 @@
 # Delete all records older than start date - not required (month and year checked later)
 ##  Parsing_GK <- Parsing_GK[!(Parsing_GK$Created < StartDate),]
 ##  Parsing_VM <- Parsing_VM[!(Parsing_VM$Created < StartDate),]
+##  Parse current date less 6 months
+##  Date to be the first of that month
 
 # Create DFs with names
   LastSixMonths_GK <-data.frame(matrix(ncol=12,nrow=6))
