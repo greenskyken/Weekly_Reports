@@ -3,9 +3,9 @@
 # --Count of new tickets created per month, by month and average ticket outstanding time, by month
 
 # Load libraries
-  library(readr)       # Load CSV into Data.Frame
-  library(lubridate)   # Manipulation of Dates
-  library(reshape2)    # Melting Data.Frame for GGPlot
+  library(readr)       # Load CSV into data.frame
+  library(lubridate)   # Manipulation of dates
+  library(reshape2)    # Melting data.frame for GGPlot
   library(ggplot2)     # Plotting
 
 # Import Excel File
