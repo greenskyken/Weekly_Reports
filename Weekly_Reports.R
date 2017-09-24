@@ -24,8 +24,6 @@
   SAP_GK <- subset(data.frame(SAP_REPORT),WorkCtr == 'GKEST')
   SAP_VM <- subset(data.frame(SAP_REPORT),WorkCtr == 'VSEE1')
   
-  rm(SAP_REPORT)
-
 #Create parsing tables
   Parsing_ColNames <- c("Created","Month","Year","Completed","Outstanding","Priority","Status")
 
@@ -106,8 +104,6 @@
     Counter <- Counter + 1
   }
 
- rm(SAP_GK,SAP_VM, Counter)
-
 ## Extract and calculate current record set - Last six months data
 # Get record start date-first of the month
   StartDate <- Sys.Date() %m-% months(5)
@@ -130,8 +126,6 @@
   colnames(LastSixMonths_GK) <- ColN
   colnames(LastSixMonths_VM) <- ColN
   
-  rm(ColN)
-
 # Add last six month - Month and year
   LastSixMonths_GK$Month[1] <- month(StartDate); LastSixMonths_GK$Year <- year(StartDate)
   LastSixMonths_GK$Month[2] <- month(StartDate %m+% months(1)); LastSixMonths_GK$Year <-year(StartDate %m+% months(1))
@@ -316,4 +310,3 @@
     ggtitle(VM_Title) + scale_fill_manual(values=cbPalette) + labs(fill = "Legend") +
     scale_y_continuous(limits = c(0,VM_Scale), breaks = seq(0,VM_Scale,10), minor_breaks = seq(10,110,20))
   
-  rm(list=ls())
