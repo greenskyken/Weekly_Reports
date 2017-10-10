@@ -298,27 +298,15 @@
   GK_Title <- c(paste("Gahcho Kue Mine - SAP Notifications - Last 6 Months - report date:",format(Sys.Date(),"%b-%d-%Y")))
   VM_Title <- c(paste("Victor Mine - SAP Notifications - Last 6 Months - report date:",format(Sys.Date(),"%b-%d-%Y")))
    
-  #Colour Pallette
   cbPalette <- c("#000000","#E69F00","#666666","#56B4E9","#999999","#009E73","#cccccc","#F0E442","#ffffff","#0072B2","#D55E00","#CC79A7")
   
-  #Save to PDF Wrapper
-  pdfname = c(paste("~/Desktop/Stuff/R/Weekly_Reports/&__Data/",format(Sys.Date(),"%m-%d-%Y"),"- PS Weekly Reporting.pdf"))
-  pdf(pdfname, height = 5.5, width = 8.5)
-  
-  #Plot Gahcho to Wrapper
   ggplot(df_G, aes(x=Month, y=value, fill=variable)) + scale_x_discrete(limits = MonOrderG) + 
     geom_bar(stat='identity', position ='dodge', colour = 'black') + xlab("Month/Year") + ylab("New Notifications/Average Outstanding") + 
     ggtitle(GK_Title) + scale_fill_manual(values=cbPalette) + labs(fill = "Legend") +
     scale_y_continuous(limits = c(0,GK_Scale), breaks = seq(0,GK_Scale,10), minor_breaks = seq(10,110,20))
-
-  #Plot Victor to Wrapper
-    ggplot(df_V, aes(x=Month, y=value, fill=variable)) + scale_x_discrete(limits = MonOrderV) +  
+  
+  ggplot(df_V, aes(x=Month, y=value, fill=variable)) + scale_x_discrete(limits = MonOrderV) +  
     geom_bar(stat='identity', position ='dodge', colour = 'black') + xlab("Month/Year") + ylab("New Notifications/Average Outstanding") +
     ggtitle(VM_Title) + scale_fill_manual(values=cbPalette) + labs(fill = "Legend") +
     scale_y_continuous(limits = c(0,VM_Scale), breaks = seq(0,VM_Scale,10), minor_breaks = seq(10,110,20))
-
-  #Close PDF Wrapper
-  dev.off()
-
-
   
