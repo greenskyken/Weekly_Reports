@@ -280,8 +280,6 @@
   LastSix_GK$Month <- paste(LastSix_GK$Month," - ",LastSix_GK$Year) ; LastSix_VM$Month <- paste(LastSix_VM$Month," - ",LastSix_VM$Year)
   LastSix_GK <- LastSix_GK[,-2] ; LastSix_VM <- LastSix_VM[,-2]
   
-  rm(LastSixMonths_GK,LastSixMonths_VM,Parsing_GK,Parsing_VM)
-  
   ### Plotting All
   # Y Scale - Find Highest # in each of GK and VM Frames
   GK_Scale <- max(LastSix_GK[2:11], na.rm=TRUE) ; VM_Scale <- max(LastSix_VM[2:11], na.rm=TRUE)
@@ -320,5 +318,16 @@
   #Close PDF Wrapper
   dev.off()
 
+  #Plot Gahcho to Plots
+  ggplot(df_G, aes(x=Month, y=value, fill=variable)) + scale_x_discrete(limits = MonOrderG) + 
+      geom_bar(stat='identity', position ='dodge', colour = 'black') + xlab("Month/Year") + ylab("New Notifications/Average Outstanding") + 
+      ggtitle(GK_Title) + scale_fill_manual(values=cbPalette) + labs(fill = "Legend") +
+      scale_y_continuous(limits = c(0,GK_Scale), breaks = seq(0,GK_Scale,10), minor_breaks = seq(10,110,20))
+  
+  #Plot Victor to Plots
+  ggplot(df_V, aes(x=Month, y=value, fill=variable)) + scale_x_discrete(limits = MonOrderV) +  
+      geom_bar(stat='identity', position ='dodge', colour = 'black') + xlab("Month/Year") + ylab("New Notifications/Average Outstanding") +
+      ggtitle(VM_Title) + scale_fill_manual(values=cbPalette) + labs(fill = "Legend") +
+      scale_y_continuous(limits = c(0,VM_Scale), breaks = seq(0,VM_Scale,10), minor_breaks = seq(10,110,20))
 
   
