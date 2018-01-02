@@ -128,11 +128,11 @@
   
 # Add last six month - Month and year
   LastSixMonths_GK$Month[1] <- month(StartDate); LastSixMonths_GK$Year <- year(StartDate)
-  LastSixMonths_GK$Month[2] <- month(StartDate %m+% months(1)); LastSixMonths_GK$Year[2] <-year(StartDate %m+% months(1))
-  LastSixMonths_GK$Month[3] <- month(StartDate %m+% months(2)); LastSixMonths_GK$Year[3] <-year(StartDate %m+% months(2))
-  LastSixMonths_GK$Month[4] <- month(StartDate %m+% months(3)); LastSixMonths_GK$Year[4] <-year(StartDate %m+% months(3))
-  LastSixMonths_GK$Month[5] <- month(StartDate %m+% months(4)); LastSixMonths_GK$Year[5] <-year(StartDate %m+% months(4))
-  LastSixMonths_GK$Month[6] <- month(StartDate %m+% months(5)); LastSixMonths_GK$Year[6] <-year(StartDate %m+% months(5))
+  LastSixMonths_GK$Month[2] <- month(StartDate %m+% months(1)); LastSixMonths_GK$Year <-year(StartDate %m+% months(1))
+  LastSixMonths_GK$Month[3] <- month(StartDate %m+% months(2)); LastSixMonths_GK$Year <-year(StartDate %m+% months(2))
+  LastSixMonths_GK$Month[4] <- month(StartDate %m+% months(3)); LastSixMonths_GK$Year <-year(StartDate %m+% months(3))
+  LastSixMonths_GK$Month[5] <- month(StartDate %m+% months(4)); LastSixMonths_GK$Year <-year(StartDate %m+% months(4))
+  LastSixMonths_GK$Month[6] <- month(StartDate %m+% months(5)); LastSixMonths_GK$Year <-year(StartDate %m+% months(5))
 
   LastSixMonths_VM$Month <- LastSixMonths_GK$Month; LastSixMonths_VM$Year <- LastSixMonths_GK$Year;
 
